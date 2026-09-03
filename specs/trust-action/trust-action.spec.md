@@ -1,6 +1,6 @@
 ---
 module: trust-action
-version: 11
+version: 14
 status: stable
 files:
   - action.yml
@@ -34,7 +34,7 @@ Augur risk, progressive Attest provenance, and optional Atlas publication.
 | `inputs.range` | Optional explicit comparison range. |
 | `inputs.profile` | Optional stricter profile override. |
 | `inputs.augur-threshold` | Optional stricter risk threshold. |
-| `inputs.specsync-version` | Exact SpecSync version, defaulting to released 5.1.1. |
+| `inputs.specsync-version` | Exact SpecSync version, defaulting to 6.0.0-rc.12. |
 | `inputs.specsync-download-base-url` | Optional authority-free runner-local mirror URL for governed self-hosting. |
 | `outputs.status` | Overall passed, degraded, or failed status. |
 | `outputs.range` | Canonical comparison range. |
@@ -63,6 +63,7 @@ Augur risk, progressive Attest provenance, and optional Atlas publication.
 4. Atlas is disabled unless committed policy explicitly enables it.
 5. Generated workflows keep Pages write permissions outside the Trust job.
 6. SpecSync artifact overrides are local, checksummed, confined beneath `RUNNER_TEMP`, and resolved before lifecycle execution.
+7. Lifecycle uses the same resolved SpecSync binary the contract step will use; runner PATH cannot select another SpecSync.
 
 ## Behavioral Examples
 
@@ -84,7 +85,7 @@ And missing provenance may report degraded rather than failed
 ## Dependencies
 
 - Fledge 1.7.0
-- SpecSync 5.1.1
+- SpecSync 6.0.0-rc.12
 - Augur 1.0.0
 - Attest 1.0.0
 
@@ -100,3 +101,9 @@ And missing provenance may report degraded rather than failed
 | 2026-07-13 | CHG-0007-harden-trusted-specsync-mirror-validation-before-lifecycle-execution: Harden trusted SpecSync mirror validation before lifecycle execution |
 | 2026-07-13 | CHG-0008-revalidate-the-trusted-specsync-mirror-immediately-before-contract-consumption: Revalidate the trusted SpecSync mirror immediately before contract consumption |
 | 2026-07-18 | CHG-0009-adopt-specsync-5-1-1-as-the-pinned-contract-toolchain: Adopt SpecSync 5.1.1 as the pinned contract toolchain |
+| 2026-07-27 | Bump pinned SpecSync to 5.2.0 |
+| 2026-08-27 | pin-specsync-6-0-0-rc-9-as-the-trust-1-2-0-rc-1-contract-toolchain: Pin SpecSync 6.0.0-rc.9 as the Trust 1.2.0-rc.1 contract toolchain |
+| 2026-08-27 | pin-one-specsync-for-lifecycle-and-contract-and-allow-github-released-specsync-version-without-a-mirror: Pin one SpecSync for lifecycle and contract |
+| 2026-09-01 | pin-specsync-6-0-0-rc-11-as-the-trust-1-2-0-rc-3-contract-toolchain: Pin SpecSync 6.0.0-rc.11 as the Trust 1.2.0-rc.3 contract toolchain |
+| 2026-09-02 | pin-specsync-6-0-0-rc-12-as-the-trust-1-2-0-rc-4-contract-toolchain: Pin SpecSync 6.0.0-rc.12 as the Trust 1.2.0-rc.4 contract toolchain |
+| 2026-09-02 | pin-specsync-6-0-0-rc-12-as-the-trust-1-2-0-rc-4-contract-toolchain: Pin SpecSync 6.0.0-rc.12 as the Trust 1.2.0-rc.4 contract toolchain |
